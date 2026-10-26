@@ -1,0 +1,30 @@
+# Audit: csv-tidy
+
+## Numbers
+- description_chars: 151
+- when_to_use_chars: 0
+- body_lines: 83
+- body_words_latin: 635
+- body_cjk_chars: 0
+- body_tokens_est: 932
+- headings: 13
+- code_blocks: 4
+- emphasis_markers: 13
+- all_caps_words: 18
+- bold_spans: 0
+- filler_lines: 5
+- hedge_lines: 2
+- supporting_files: 3
+- supporting_tokens_est: 84
+
+## Findings
+- WARN C6 [SKILL.md:35]: 1 lines with time-sensitive wording (heuristic: confirm by reading)
+- WARN D3: description uses first/second person (I); write in third person (heuristic: confirm by reading)
+- WARN D4: description has no visible 'when to use' trigger phrase (heuristic: confirm by reading)
+- WARN E1 [SKILL.md:16, SKILL.md:18, SKILL.md:19, SKILL.md:20, SKILL.md:21, SKILL.md:35, SKILL.md:43]: 13 emphasis markers (MUST/NEVER/ALWAYS/IMPORTANT…), 15.7 per 100 lines; keep emphasis for rules that were observed to be broken (heuristic: confirm by reading)
+- WARN R2: details.md links on to ['encodings.md']; keep references one level deep from SKILL.md
+- INFO C2 [SKILL.md:10, SKILL.md:27, SKILL.md:31, SKILL.md:35, SKILL.md:39]: 5 lines with filler phrases (heuristic: confirm by reading)
+- INFO C3 [SKILL.md:14, SKILL.md:27]: 2 lines with hedging words (heuristic: confirm by reading)
+- INFO D5: description may summarise the procedure (agents may follow it instead of the body) (heuristic: confirm by reading)
+- INFO R5: notes-old.md is never mentioned in SKILL.md, so the agent will not know to read it
+- INFO R5: encodings.md is never mentioned in SKILL.md, so the agent will not know to read it

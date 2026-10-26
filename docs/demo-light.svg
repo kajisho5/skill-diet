@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 476" width="880" height="476" role="img" aria-label="skill-diet before and after on a sample skill: body tokens 932 to 330, invariants kept 19 of 19">
+<rect width="880" height="476" rx="16" fill="#FFFFFF"/>
+<text x="32" y="48" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#0B0F14">csv-tidy (fictional sample skill), before → after</text>
+<text x="32" y="74" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" fill="#57606A">Measured with scripts/skill_audit.py compare. Bars are relative to the original.</text>
+<text x="32" y="127" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#0B0F14">Body tokens (est.)</text>
+<rect x="272" y="112" width="360" height="10" rx="5" fill="#D0D7DE"/>
+<rect x="272" y="124" width="127.5" height="10" rx="5" fill="#16A34A"/>
+<text x="648" y="127" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0B0F14">932 → 330</text>
+<text x="848" y="127" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#16A34A">-65%</text>
+<text x="32" y="171" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#0B0F14">Body lines</text>
+<rect x="272" y="156" width="360" height="10" rx="5" fill="#D0D7DE"/>
+<rect x="272" y="168" width="173.5" height="10" rx="5" fill="#16A34A"/>
+<text x="648" y="171" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0B0F14">83 → 40</text>
+<text x="848" y="171" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#16A34A">-52%</text>
+<text x="32" y="215" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#0B0F14">MUST / NEVER / IMPORTANT</text>
+<rect x="272" y="200" width="360" height="10" rx="5" fill="#D0D7DE"/>
+<rect x="272" y="212" width="55.4" height="10" rx="5" fill="#16A34A"/>
+<text x="648" y="215" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0B0F14">13 → 2</text>
+<text x="848" y="215" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#16A34A">-85%</text>
+<text x="32" y="259" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#0B0F14">Headings</text>
+<rect x="272" y="244" width="360" height="10" rx="5" fill="#D0D7DE"/>
+<rect x="272" y="256" width="110.8" height="10" rx="5" fill="#16A34A"/>
+<text x="648" y="259" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0B0F14">13 → 4</text>
+<text x="848" y="259" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#16A34A">-69%</text>
+<text x="32" y="303" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#0B0F14">Filler + hedge lines</text>
+<rect x="272" y="288" width="360" height="10" rx="5" fill="#D0D7DE"/>
+<rect x="272" y="300" width="3.0" height="10" rx="5" fill="#16A34A"/>
+<text x="648" y="303" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#0B0F14">7 → 0</text>
+<text x="848" y="303" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#16A34A">-100%</text>
+<line x1="32" x2="848" y1="336" y2="336" stroke="#D8DEE4"/>
+<rect x="32.0" y="358" width="261.3" height="92" rx="12" fill="#F6F8FA"/>
+<text x="50.0" y="386" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#57606A">Invariants kept</text>
+<text x="50.0" y="416" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#16A34A">19 / 19</text>
+<text x="50.0" y="436" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#57606A">numbers, paths, formats, conditions</text>
+<rect x="309.3" y="358" width="261.3" height="92" rx="12" fill="#F6F8FA"/>
+<text x="327.3" y="386" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#57606A">Trigger test</text>
+<text x="327.3" y="416" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#16A34A">12 → 17 / 18</text>
+<text x="327.3" y="436" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#57606A">0 regressions</text>
+<rect x="586.7" y="358" width="261.3" height="92" rx="12" fill="#F6F8FA"/>
+<text x="604.7" y="386" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#57606A">Description</text>
+<text x="604.7" y="416" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#B45309">151 → 232 chars</text>
+<text x="604.7" y="436" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#57606A">longer on purpose: added when-to-use</text>
+</svg>

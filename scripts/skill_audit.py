@@ -29,6 +29,7 @@ BODY_TOKENS_MAX = 5000        # spec: body < 5000 tokens recommended
 COMPACTION_KEEP = 5000        # Claude Code keeps first 5,000 tokens on compaction
 REF_TOC_LINES = 100           # best practices: TOC for reference files > 100 lines
 EMPHASIS_PER_100_LINES = 3    # local heuristic: more than this reads as shouting
+EMPHASIS_MIN_COUNT = 3        # a short skill with 2-3 guarded rules is not shouting
 
 PORTABLE_KEYS = {"name", "description", "license", "compatibility",
                  "metadata", "allowed-tools"}
@@ -304,7 +305,7 @@ def audit(skill_dir):
     caps_total = len(CAPS_WORD.findall(prose))
     bold_total = len(re.findall(r"\*\*[^*\n]+\*\*", prose))
     per100 = emph_total / max(len(body_lines), 1) * 100
-    if per100 > EMPHASIS_PER_100_LINES:
+    if per100 > EMPHASIS_PER_100_LINES and emph_total > EMPHASIS_MIN_COUNT:
         where = ", ".join(f"SKILL.md:{n}" for n, _ in emph_hits[:8])
         add(findings, "E1", "WARN", f"{emph_total} emphasis markers "
             f"(MUST/NEVER/ALWAYS/IMPORTANT…), {per100:.1f} per 100 lines; "

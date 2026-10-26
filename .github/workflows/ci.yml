@@ -33,3 +33,7 @@ jobs:
         run: python scripts/skill_audit.py audit .
       - name: Package builds
         run: python .github/scripts/build_skill.py
+      - name: README demo matches the example data
+        run: |
+          python demos/build.py
+          git diff --exit-code docs/

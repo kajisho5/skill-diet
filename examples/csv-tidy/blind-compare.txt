@@ -1,0 +1,3 @@
+t1: tie - the tidy and rejected files are identical, and both warnings files flag the A2 conflict and the bad date on the same lines (5 and 7). A also says where A2 first appeared, and B also gives the bad date value.
+
+t3: B - the outputs are identical except for warning row numbers. B's rows (3 and 4) are file lines counting the header, the same numbering both candidates use in t1. A's rows (2 and 3) are data-row indexes. B's warnings also include the offending value.

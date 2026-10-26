@@ -130,6 +130,10 @@ class AuditTests(unittest.TestCase):
         body = GOOD.format(name="widget-summary") + "\n" + rules + "\n"
         self.assertIn("E1", ids(skill_audit.audit(make_skill(self.tmp, body=body))))
 
+    def test_two_guarded_rules_in_a_short_skill_are_not_flagged(self):
+        body = GOOD.format(name="widget-summary") + "\n- NEVER delete input.\n- NEVER skip row checks.\n"
+        self.assertNotIn("E1", ids(skill_audit.audit(make_skill(self.tmp, body=body))))
+
     def test_emphasis_in_inline_code_is_ignored(self):
         body = GOOD.format(name="widget-summary") + "\nKeep `MUST` and `NEVER` rare.\n"
         self.assertNotIn("E1", ids(skill_audit.audit(make_skill(self.tmp, body=body))))

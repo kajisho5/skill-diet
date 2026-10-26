@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0
+
+- Audit-only mode: when the user asks only for a review, the skill stops after the audit pass and reports findings without rewriting.
+- `skill_audit.py`: the emphasis finding (E1) now needs more than 3 markers as well as a high density, so a short skill that keeps two guarded `NEVER` rules is no longer flagged.
+- `skill_audit.py`: files under `.github/` and `dist/` are no longer counted as part of the skill.
+- README rewritten in full, with the measured before/after of a sample skill (`examples/csv-tidy/`), logo and icon.
+
 ## 1.0.0
 
 First release.

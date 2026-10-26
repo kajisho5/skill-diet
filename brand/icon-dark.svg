@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="skill-diet icon">
+<rect width="256" height="256" rx="56" fill="#0B0F14"/>
+<path fill="#F5F7FA" d="M72 44h84l32 32v52c0 4-14 6-14 20v40c0 9-7 16-16 16H88c-9 0-16-7-16-16v-40c0-14-14-16-14-20V60c0-9 7-16 14-16z"/>
+<path fill="#0B0F14" opacity=".18" d="M156 44v24c0 4 4 8 8 8h24z"/>
+<rect x="94" y="88" width="68" height="9" rx="4.5" fill="#0B0F14" opacity=".55"/>
+<rect x="94" y="106" width="48" height="9" rx="4.5" fill="#0B0F14" opacity=".55"/>
+<rect x="48" y="128" width="160" height="22" rx="11" fill="#4ADE80"/>
+<rect x="120" y="124" width="22" height="30" rx="6" fill="none" stroke="#F5F7FA" stroke-width="6"/>
+<rect x="94" y="168" width="58" height="9" rx="4.5" fill="#0B0F14" opacity=".55"/>
+<rect x="94" y="186" width="40" height="9" rx="4.5" fill="#0B0F14" opacity=".55"/>
+</svg>

@@ -1,0 +1,265 @@
+{
+  "old": {
+    "skill_dir": "csv-tidy",
+    "name": "csv-tidy",
+    "frontmatter_keys": [
+      "description",
+      "name"
+    ],
+    "stats": {
+      "description_chars": 151,
+      "when_to_use_chars": 0,
+      "body_lines": 83,
+      "body_words_latin": 635,
+      "body_cjk_chars": 0,
+      "body_tokens_est": 932,
+      "headings": 13,
+      "code_blocks": 4,
+      "emphasis_markers": 13,
+      "all_caps_words": 18,
+      "bold_spans": 0,
+      "filler_lines": 5,
+      "hedge_lines": 2,
+      "supporting_files": 3,
+      "supporting_tokens_est": 84
+    },
+    "findings": [
+      {
+        "id": "C6",
+        "level": "WARN",
+        "kind": "heuristic",
+        "where": "SKILL.md:35",
+        "message": "1 lines with time-sensitive wording"
+      },
+      {
+        "id": "D3",
+        "level": "WARN",
+        "kind": "heuristic",
+        "where": null,
+        "message": "description uses first/second person (I); write in third person"
+      },
+      {
+        "id": "D4",
+        "level": "WARN",
+        "kind": "heuristic",
+        "where": null,
+        "message": "description has no visible 'when to use' trigger phrase"
+      },
+      {
+        "id": "E1",
+        "level": "WARN",
+        "kind": "heuristic",
+        "where": "SKILL.md:16, SKILL.md:18, SKILL.md:19, SKILL.md:20, SKILL.md:21, SKILL.md:35, SKILL.md:43",
+        "message": "13 emphasis markers (MUST/NEVER/ALWAYS/IMPORTANT…), 15.7 per 100 lines; keep emphasis for rules that were observed to be broken"
+      },
+      {
+        "id": "R2",
+        "level": "WARN",
+        "kind": "rule",
+        "where": null,
+        "message": "details.md links on to ['encodings.md']; keep references one level deep from SKILL.md"
+      },
+      {
+        "id": "C2",
+        "level": "INFO",
+        "kind": "heuristic",
+        "where": "SKILL.md:10, SKILL.md:27, SKILL.md:31, SKILL.md:35, SKILL.md:39",
+        "message": "5 lines with filler phrases"
+      },
+      {
+        "id": "C3",
+        "level": "INFO",
+        "kind": "heuristic",
+        "where": "SKILL.md:14, SKILL.md:27",
+        "message": "2 lines with hedging words"
+      },
+      {
+        "id": "D5",
+        "level": "INFO",
+        "kind": "heuristic",
+        "where": null,
+        "message": "description may summarise the procedure (agents may follow it instead of the body)"
+      },
+      {
+        "id": "R5",
+        "level": "INFO",
+        "kind": "rule",
+        "where": null,
+        "message": "notes-old.md is never mentioned in SKILL.md, so the agent will not know to read it"
+      },
+      {
+        "id": "R5",
+        "level": "INFO",
+        "kind": "rule",
+        "where": null,
+        "message": "encodings.md is never mentioned in SKILL.md, so the agent will not know to read it"
+      }
+    ]
+  },
+  "new": {
+    "skill_dir": "csv-tidy",
+    "name": "csv-tidy",
+    "frontmatter_keys": [
+      "description",
+      "name"
+    ],
+    "stats": {
+      "description_chars": 232,
+      "when_to_use_chars": 0,
+      "body_lines": 40,
+      "body_words_latin": 226,
+      "body_cjk_chars": 0,
+      "body_tokens_est": 330,
+      "headings": 4,
+      "code_blocks": 2,
+      "emphasis_markers": 2,
+      "all_caps_words": 5,
+      "bold_spans": 0,
+      "filler_lines": 0,
+      "hedge_lines": 0,
+      "supporting_files": 0,
+      "supporting_tokens_est": 0
+    },
+    "findings": [
+      {
+        "id": "C6",
+        "level": "WARN",
+        "kind": "heuristic",
+        "where": "SKILL.md:19",
+        "message": "1 lines with time-sensitive wording"
+      }
+    ]
+  },
+  "rows": [
+    [
+      "description_chars",
+      151,
+      232,
+      "+54%"
+    ],
+    [
+      "when_to_use_chars",
+      0,
+      0,
+      "n/a"
+    ],
+    [
+      "body_lines",
+      83,
+      40,
+      "-52%"
+    ],
+    [
+      "body_words_latin",
+      635,
+      226,
+      "-64%"
+    ],
+    [
+      "body_cjk_chars",
+      0,
+      0,
+      "n/a"
+    ],
+    [
+      "body_tokens_est",
+      932,
+      330,
+      "-65%"
+    ],
+    [
+      "headings",
+      13,
+      4,
+      "-69%"
+    ],
+    [
+      "code_blocks",
+      4,
+      2,
+      "-50%"
+    ],
+    [
+      "emphasis_markers",
+      13,
+      2,
+      "-85%"
+    ],
+    [
+      "all_caps_words",
+      18,
+      5,
+      "-72%"
+    ],
+    [
+      "bold_spans",
+      0,
+      0,
+      "n/a"
+    ],
+    [
+      "filler_lines",
+      5,
+      0,
+      "-100%"
+    ],
+    [
+      "hedge_lines",
+      2,
+      0,
+      "-100%"
+    ],
+    [
+      "supporting_files",
+      3,
+      0,
+      "-100%"
+    ],
+    [
+      "supporting_tokens_est",
+      84,
+      0,
+      "-100%"
+    ]
+  ],
+  "fixed": [
+    [
+      "C2",
+      "5 lines with filler phrases"
+    ],
+    [
+      "C3",
+      "2 lines with hedging words"
+    ],
+    [
+      "D3",
+      "description uses first/second person (I); write in third person"
+    ],
+    [
+      "D4",
+      "description has no visible 'when to use' trigger phrase"
+    ],
+    [
+      "D5",
+      "description may summarise the procedure (agents may follow it instead of the body)"
+    ],
+    [
+      "E1",
+      "13 emphasis markers (MUST/NEVER/ALWAYS/IMPORTANT…), 15.7 per 100 lines; keep emphasis for rules that were observed to be broken"
+    ],
+    [
+      "R2",
+      "details.md links on to ['encodings.md']; keep references one level deep from SKILL.md"
+    ],
+    [
+      "R5",
+      "encodings.md is never mentioned in SKILL.md, so the agent will not know to read it"
+    ],
+    [
+      "R5",
+      "notes-old.md is never mentioned in SKILL.md, so the agent will not know to read it"
+    ]
+  ],
+  "introduced": [],
+  "name_changed": false
+}

@@ -3,7 +3,7 @@ name: skill-diet
 description: Audits an Agent Skill (SKILL.md plus its bundled files) against the Agent Skills spec and Anthropic's authoring guidance, and produces a shorter copy that behaves the same, with a findings report and a regression check. Use when the user asks to review, audit, lint, slim down, trim, compress or cut the token cost of a skill or SKILL.md, or says a skill is too long, bloated, ignored or not triggering, even if they only paste the file. Also for Japanese requests such as スキルを短く, SKILL.mdを監査, skillを軽く.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # skill-diet
@@ -14,7 +14,9 @@ Scripts are in `scripts/` next to this file: run them as `python3 <this-skill-di
 
 ## Workflow
 
-Copy into the task list and tick off:
+If the user asks only for an audit or review, do steps 1–5 and report the findings (sections 2 and 5 of the report); do not rewrite.
+
+Otherwise copy into the task list and tick off:
 
 ```
 - [ ] 1. Set up workspace
