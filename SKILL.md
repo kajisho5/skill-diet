@@ -3,7 +3,7 @@ name: skill-diet
 description: Audits an Agent Skill (SKILL.md plus its bundled files) against the Agent Skills spec and Anthropic's authoring guidance, and produces a shorter copy that behaves the same, with a findings report and a regression check. Use when the user asks to review, audit, lint, slim down, trim, compress or cut the token cost of a skill or SKILL.md, or says a skill is too long, bloated, ignored or not triggering, even if they only paste the file. Also for Japanese requests such as スキルを短く, SKILL.mdを監査, skillを軽く.
 license: MIT
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 # skill-diet
@@ -35,7 +35,7 @@ Otherwise copy into the task list and tick off:
 2. **Measure.** Run `skill_audit.py audit <skill-dir>` and keep the output. Its findings carry IDs from [references/checklist.md](references/checklist.md). Heuristic hits are candidates: confirm each by reading the line.
 3. **Read everything.** Read SKILL.md and every bundled text file in full, and know what each script does. Anything you could not read goes in the report under "Not read".
 4. **Ledger.** Before changing a word, list every invariant per [references/regression-test.md](references/regression-test.md) §1.
-5. **Audit pass.** Walk [references/checklist.md](references/checklist.md) top to bottom. Record each finding as: ID, file:line, quote, action (cut / move / merge / rewrite / keep), estimated tokens saved.
+5. **Audit pass.** Walk [references/checklist.md](references/checklist.md) top to bottom. Record each finding as: ID, file:line, quote, action (cut / move / merge / rewrite / keep / report only, for files the user put out of scope), estimated tokens saved.
 6. **Rewrite** `trimmed/<name>/`. Apply the cut test to every sentence: "If this is gone, would a capable model do anything differently?" No → cut. Unsure → keep and list it. Move task-specific detail to `references/` with a "read when …" pointer; never delete an invariant.
 7. **Repeat.** Run `skill_audit.py compare original/<name> trimmed/<name>`, then do another full pass from a viewpoint not yet used:
    - a fresh agent reading cold: what is now unclear?
@@ -46,9 +46,9 @@ Otherwise copy into the task list and tick off:
    - load order: are hard rules within the first 5,000 tokens?
    - portability and file structure
 
-   Stop after three consecutive passes add no finding.
-8. **Regression test** per [references/regression-test.md](references/regression-test.md) §2–§5. Fix failures by restoring the shortest form that passes.
+   Stop after three consecutive passes add no finding. Once every viewpoint has been used, reuse them in the same order.
    If the cuts save under ~10% of body tokens and fix no ERROR/WARN finding, stop here and report "already lean" instead of proposing a trim.
+8. **Regression test** per [references/regression-test.md](references/regression-test.md) §2–§5.
 9. **Report and deliver** (format below). Package `trimmed/<name>/` as `<name>.skill` (a zip with the skill folder at its root, or skill-creator's `package_skill.py`) when a file-delivery tool exists.
 10. **Apply on request only.** Run `safe_apply.py apply <workspace> <target>`; it prints a plan and refuses if the target changed since the snapshot, the trimmed copy has audit ERRORs, or the name changed. After the user confirms, re-run with `--yes`: it backs up the target to `<workspace>/backups/<time>/` with SHA-256 hashes, applies, and verifies. Give the user the undo command it prints (`safe_apply.py restore <backup> <target> --yes`).
 

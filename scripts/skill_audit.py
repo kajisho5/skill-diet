@@ -452,9 +452,17 @@ def audit(skill_dir):
         if not mentioned(p, rel):
             add(findings, "R5", "INFO", f"{rel} is never mentioned in "
                 "SKILL.md, so the agent will not know to read it")
+    script_text = "\n".join(q.read_text("utf-8", "replace") for q in all_files
+                            if q.suffix.lower() in (".py", ".js", ".ts"))
+
+    def imported(p):
+        stem = re.escape(p.stem)
+        return re.search(rf"^\s*(from\s+(\.|[\w.]*\.)?{stem}\b|import\s+([\w.]*\.)?{stem}\b)"
+                         rf"|require\([\'\"][./\w-]*{stem}[\'\"]\)", script_text, re.M)
+
     for p in all_files:
         if p.suffix.lower() in (".py", ".sh", ".js", ".ts") \
-                and p.name != "__init__.py":
+                and p.name != "__init__.py" and not imported(p):
             rel = p.relative_to(root).as_posix()
             if rel.split("/")[0] in ("evals", "tests"):
                 continue

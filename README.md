@@ -18,7 +18,7 @@ Python standard library · No API keys · Original never touched without a backu
 
 <p align="center">
   <a href="#quick-start"><b>Quick start</b></a> ·
-  <a href="#example-a-bloated-skill-before-and-after">Example</a> ·
+  <a href="#real-world-example-anthropics-skill-creator">Real-world example</a> ·
   <a href="#what-it-checks">Checks</a> ·
   <a href="#scripts">Scripts</a> ·
   <a href="#日本語">日本語</a>
@@ -46,7 +46,7 @@ Python standard library · No API keys · Original never touched without a backu
 ---
 
 **Contents**
-[Why](#why) · [Quick start](#quick-start) · [Example](#example-a-bloated-skill-before-and-after) · [How it works](#how-it-works) · [Design principles](#design-principles) · [What it checks](#what-it-checks) · [Scripts](#scripts) · [Regression testing](#regression-testing) · [When the sources disagree](#when-the-sources-disagree) · [Where it runs](#where-it-runs) · [FAQ](#faq) · [How it compares](#how-it-compares) · [Limits](#limits) · [Development](#development) · [日本語](#日本語)
+[Why](#why) · [Quick start](#quick-start) · [Real-world example](#real-world-example-anthropics-skill-creator) · [Sample walk-through](#example-a-bloated-skill-before-and-after) · [How it works](#how-it-works) · [Design principles](#design-principles) · [What it checks](#what-it-checks) · [Scripts](#scripts) · [Regression testing](#regression-testing) · [When the sources disagree](#when-the-sources-disagree) · [Where it runs](#where-it-runs) · [FAQ](#faq) · [How it compares](#how-it-compares) · [Limits](#limits) · [Development](#development) · [日本語](#日本語)
 
 ---
 
@@ -96,6 +96,24 @@ python3 $D/skill_audit.py compare old/my-skill new/my-skill      # before/after 
 python3 $D/safe_apply.py apply my-skill-trim path/to/my-skill        # plan only
 python3 $D/safe_apply.py apply my-skill-trim path/to/my-skill --yes  # backup + apply + verify
 ```
+
+## Real-world example: Anthropic's skill-creator
+
+The chart above is a sample made to be bloated. Here is a real skill: **skill-creator** from [anthropics/skills](https://github.com/anthropics/skills/tree/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/skill-creator) (commit `dbd4588`, Apache-2.0), chosen because its body is over the spec's ~5,000-token recommendation. An agent ran the full skill-diet workflow on a copy; the result was then checked independently. Full evidence in [`examples/skill-creator/`](examples/skill-creator/). Not affiliated with Anthropic and not proposed upstream.
+
+| | before | after |
+|---|---|---|
+| SKILL.md body | 482 lines, ~8,225 tokens | 264 lines, ~4,414 tokens (**−46%**) |
+| Fits in the 5,000 tokens kept after compaction | no: everything from ~line 313 on could be dropped | yes |
+| Description | 319 chars | unchanged, on purpose |
+| Scripts, viewer, agents, schemas, license | | byte-identical (SHA-256) |
+| Invariants (commands, paths, flags, field names, numbers, rules) | 74 listed | 74 / 74 kept |
+| Trigger test (20 queries) | 17 / 20 | 17 / 20 |
+| Behavior test (3 tasks, fictional data) | all assertions pass | all assertions pass |
+
+What went: pep talk ("Cool? Cool.", "billions a year in economic value"), filler and hedges, the closing recap, the same viewer rule stated three times, decorative bold. What moved: the ~1,000-token description-optimization section, now read only when the user takes that step. What stayed on purpose: the description, every command and field name, both all-caps rules, and the advice that shapes the skills users write. One visible change: the original contradicts itself on test-case directory names, and the trimmed copy keeps only the explicit rule.
+
+The blind comparison went 2–1 to the original in the first round; comparing the original with itself showed the same variation, and the trimmed copy won later pairs on both disputed tasks ([details](examples/skill-creator/blind-results.md)). How much a skill shrinks depends on the skill: one that is already lean gets "already lean", not a forced cut.
 
 ## Example: a bloated skill, before and after
 
@@ -364,7 +382,7 @@ Several tools cover part of this ground; the backup-and-undo design here was ins
 ## Development
 
 ```bash
-python3 -m unittest discover -s tests -v       # 21 tests: audit rules, compare, apply/restore
+python3 -m unittest discover -s tests -v       # 22 tests: audit rules, compare, apply/restore
 python3 scripts/skill_audit.py audit .           # the skill passes its own audit
 python3 .github/scripts/build_skill.py           # dist/skill-diet.skill
 python3 demos/build.py                           # docs/demo-*.svg from examples/csv-tidy/
@@ -404,6 +422,22 @@ MIT. See [LICENSE](LICENSE).
    - 発動テスト：ちゃんと呼ばれるか
    - 動作テスト：原本と短縮版に同じ作業をさせ、どちらがどちらか伏せて比べる
 5. **反映は頼まれたときだけ**：ハッシュ（ファイルの指紋）で確かめたバックアップを取ってから反映します。1コマンドで元に戻せます
+
+### 実例：Anthropic 公式の skill-creator
+
+実在のスキルでも試しました。Anthropic の [skill-creator](https://github.com/anthropics/skills/tree/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/skill-creator)（Apache 2.0）です。本文が仕様の目安（約5,000トークン）を超えていたので選びました。作業はコピーに対して行い、結果は別途こちらでも検証しています（[examples/skill-creator/](examples/skill-creator/)）。Anthropic とは無関係で、本家への提案もしていません。
+
+| | 前 | 後 |
+|---|---|---|
+| 本文 | 482行・約8,225トークン | 264行・約4,414トークン（−46%） |
+| 会話の要約後も残る5,000トークンに収まるか | 収まらない（約313行目以降が消えうる） | 収まる |
+| 説明文 | 319文字 | 変更なし（わざと） |
+| スクリプト・ビューア・付属文書・ライセンス | | 1バイトも変えていない（ハッシュで確認） |
+| 消してはいけない項目 | 74件 | 74件すべて保持 |
+| 発動テスト（20問） | 17問正解 | 17問正解 |
+| 動作テスト（架空データ3課題） | 全項目合格 | 全項目合格 |
+
+削ったのは、励ましの言葉、前置き・ぼかし表現、最後のまとめ、3回出てくる同じ注意などです。説明文の最適化の手順（約1,000トークン）は、その作業をするときだけ読む別ファイルに移しました。どれだけ縮むかはスキル次第で、すでに引き締まっているスキルには「もう十分短い」と返します。
 
 ### 実例（架空のスキル）
 

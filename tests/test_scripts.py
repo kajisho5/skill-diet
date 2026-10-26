@@ -125,6 +125,16 @@ class AuditTests(unittest.TestCase):
         self.assertIn("R2", ids(r))
         self.assertIn("R5", ids(r))
 
+    def test_module_imported_by_a_mentioned_script_is_not_flagged(self):
+        d = make_skill(self.tmp, files={
+            "scripts/tool.py": "from helpers import load\nprint(load())\n",
+            "scripts/helpers.py": "def load():\n    return 1\n",
+            "scripts/stray.py": "print('unused')\n",
+        })
+        msgs = [f["message"] for f in skill_audit.audit(d)["findings"] if f["id"] == "R5"]
+        self.assertFalse(any("helpers.py" in m for m in msgs), msgs)
+        self.assertTrue(any("stray.py" in m for m in msgs), msgs)
+
     def test_emphasis_density(self):
         rules = "\n".join(f"- You MUST ALWAYS do thing {i}." for i in range(10))
         body = GOOD.format(name="widget-summary") + "\n" + rules + "\n"

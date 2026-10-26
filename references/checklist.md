@@ -111,7 +111,7 @@ Cut test for every sentence: "If this is gone, would a capable model do anything
 | R2 | References one level deep from SKILL.md (auto) | SPEC, BP | Agents may only partially read nested files. |
 | R3 | Reference files > 100 lines start with a table of contents (auto) | BP | |
 | R4 | Forward slashes only (auto) | BP | |
-| R5 | Every bundled file is mentioned in SKILL.md with when to read/run it (auto) | BP | Unmentioned files are never used: mention or delete. |
+| R5 | Every bundled file is mentioned in SKILL.md with when to read/run it (auto) | BP | Unmentioned files are never used: mention or delete. Exempt: modules imported by another script (the script reports them as imported). |
 | R6 | Clear intent: "Run X" vs "Read X" | BP | |
 | R7 | Descriptive file names | BP | |
 

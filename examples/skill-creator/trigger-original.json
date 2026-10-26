@@ -1,0 +1,171 @@
+{
+ "skill_name": "skill-creator",
+ "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+ "results": [
+  {
+   "query": "i keep pasting the same 6-step checklist into chat every time i onboard a new contractor at Quillfeather Teapots (fictional co, my side project). can you turn that workflow into a reusable skill so claude just knows it?",
+   "should_trigger": true,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": false
+  },
+  {
+   "query": "I have a SKILL.md at ~/skills/moonpaste-labels/SKILL.md that formats shipping labels. It keeps getting ignored when I ask for labels. Can you figure out why it isn't triggering and fix the description?",
+   "should_trigger": true,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": false
+  },
+  {
+   "query": "Can you set up evals for my skill at ./skills/zorblax-report? I want to know if it actually beats plain Claude on 3 or 4 realistic prompts, with a benchmark of pass rate and tokens.",
+   "should_trigger": true,
+   "trigger_rate": 1.0,
+   "triggers": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "we just did this whole csv->invoice dance together over the last hour. capture what we did as a skill so next time I can just say 'make the invoices'",
+   "should_trigger": true,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": false
+  },
+  {
+   "query": "My team's 'release-notes' skill got a big rewrite. Is the new version actually better than the old one? Run both on the same prompts and compare blind.",
+   "should_trigger": true,
+   "trigger_rate": 1.0,
+   "triggers": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "Write me a new Agent Skill that teaches Claude our fictional Glimmerbrook house style for API docs: headings, code sample rules, and a lint checklist. Include test prompts.",
+   "should_trigger": true,
+   "trigger_rate": 1.0,
+   "triggers": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "benchmark my pdf-redactor skill with variance analysis, 3 runs per eval, with and without the skill",
+   "should_trigger": true,
+   "trigger_rate": 1.0,
+   "triggers": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "the description on my 'tidepool-sql' skill is too vague, it fires on every SQL question. optimize it so it only triggers for our fictional Tidepool warehouse schema questions",
+   "should_trigger": true,
+   "trigger_rate": 1.0,
+   "triggers": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "Here's my draft skill folder (skills/hollyhock-minutes). Can you iterate on it with me? Run a couple of test cases, show me the outputs so I can leave feedback, then improve it.",
+   "should_trigger": true,
+   "trigger_rate": 1.0,
+   "triggers": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "I want to package my finished skill 'brassbell-faq' and also tighten up its instructions before I share it with the team",
+   "should_trigger": true,
+   "trigger_rate": 1.0,
+   "triggers": 1,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "Write a Python script that reads orders_q3.csv from the fictional Quillfeather shop and outputs a summary of revenue by month",
+   "should_trigger": false,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "my claude code hooks config isn't firing on PreToolUse, here's my settings.json, what's wrong?",
+   "should_trigger": false,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "Write unit tests with pytest for the parse_label() function in moonpaste/labels.py, aim for edge cases like empty postcodes",
+   "should_trigger": false,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "can you build an MCP server in TypeScript that exposes our fictional Zorblax inventory API as tools?",
+   "should_trigger": false,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "Create a Word document (.docx) onboarding guide for new contractors at the fictional Glimmerbrook studio, 3 pages, with a table of tools",
+   "should_trigger": false,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "Explain the difference between a Claude Code slash command, a subagent and a hook. Which should I use to run lint after every edit?",
+   "should_trigger": false,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "I'm evaluating three LLM vendors for summarizing support tickets. Design an eval harness with a rubric and a spreadsheet of results.",
+   "should_trigger": false,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "Refactor this 400-line prompt we send to the API for ticket triage so it's shorter but behaves the same; it's a system prompt, not a skill",
+   "should_trigger": false,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "write a CLAUDE.md for this repo describing the build commands and code style",
+   "should_trigger": false,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": true
+  },
+  {
+   "query": "Set up a GitHub Actions workflow that runs our Python test suite on every pull request for the fictional hollyhock repo",
+   "should_trigger": false,
+   "trigger_rate": 0.0,
+   "triggers": 0,
+   "runs": 1,
+   "pass": true
+  }
+ ],
+ "summary": {
+  "total": 20,
+  "passed": 17,
+  "failed": 3
+ }
+}

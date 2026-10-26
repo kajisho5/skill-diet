@@ -1,0 +1,32 @@
+# Compare
+- old: original/skill-creator
+- new: trimmed/skill-creator
+
+| metric | old | new | change |
+|---|---|---|---|
+| description_chars | 319 | 319 | +0% |
+| when_to_use_chars | 0 | 0 | n/a |
+| body_lines | 482 | 264 | -45% |
+| body_words_latin | 5134 | 2615 | -49% |
+| body_cjk_chars | 0 | 0 | n/a |
+| body_tokens_est | 8225 | 4414 | -46% |
+| headings | 34 | 23 | -32% |
+| code_blocks | 15 | 12 | -20% |
+| emphasis_markers | 3 | 3 | +0% |
+| all_caps_words | 28 | 15 | -46% |
+| bold_spans | 46 | 15 | -67% |
+| filler_lines | 16 | 4 | -75% |
+| hedge_lines | 12 | 2 | -83% |
+| supporting_files | 17 | 18 | +6% |
+| supporting_tokens_est | 12533 | 13635 | +9% |
+
+## Findings fixed
+- C2: 16 lines with filler phrases (+6 more)
+- C3: 12 lines with hedging words (+2 more)
+- C6: 2 lines with time-sensitive wording
+- L2: body is ~8225 tokens (spec recommends < 5000)
+- L3: after context compaction Claude Code keeps only the first 5000 tokens; content from about line 313 on can be lost
+
+## Findings introduced
+- C2: 4 lines with filler phrases
+- C3: 2 lines with hedging words

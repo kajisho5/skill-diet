@@ -1,0 +1,33 @@
+# Audit: original/skill-creator
+
+## Numbers
+- description_chars: 319
+- when_to_use_chars: 0
+- body_lines: 482
+- body_words_latin: 5134
+- body_cjk_chars: 0
+- body_tokens_est: 8225
+- headings: 34
+- code_blocks: 15
+- emphasis_markers: 3
+- all_caps_words: 28
+- bold_spans: 46
+- filler_lines: 16
+- hedge_lines: 12
+- supporting_files: 17
+- supporting_tokens_est: 12533
+
+## Findings
+- WARN C6 [SKILL.md:34, SKILL.md:67]: 2 lines with time-sensitive wording (heuristic: confirm by reading)
+- WARN L2: body is ~8225 tokens (spec recommends < 5000)
+- INFO C2 [SKILL.md:26, SKILL.md:36, SKILL.md:41, SKILL.md:67, SKILL.md:93, SKILL.md:145, SKILL.md:167, SKILL.md:188, SKILL.md:201, SKILL.md:300]: 16 lines with filler phrases (+6 more) (heuristic: confirm by reading)
+- INFO C3 [SKILL.md:34, SKILL.md:49, SKILL.md:67, SKILL.md:91, SKILL.md:129, SKILL.md:139, SKILL.md:234, SKILL.md:298, SKILL.md:302, SKILL.md:348]: 12 lines with hedging words (+2 more) (heuristic: confirm by reading)
+- INFO L3 [SKILL.md:313]: after context compaction Claude Code keeps only the first 5000 tokens; content from about line 313 on can be lost
+- INFO R3: references/schemas.md has 431 lines and no table of contents near the top
+- INFO R3: agents/comparator.md has 203 lines and no table of contents near the top
+- INFO R3: agents/grader.md has 224 lines and no table of contents near the top
+- INFO R3: agents/analyzer.md has 275 lines and no table of contents near the top
+- INFO R5: script scripts/improve_description.py is never mentioned in SKILL.md
+- INFO R5: script scripts/generate_report.py is never mentioned in SKILL.md
+- INFO R5: script scripts/quick_validate.py is never mentioned in SKILL.md
+- INFO R5: script scripts/utils.py is never mentioned in SKILL.md
