@@ -1,0 +1,67 @@
+name: release
+
+# On every push to main: if SKILL.md's metadata.version has no vX.Y.Z tag yet,
+# run the tests, build dist/skill-diet.skill and publish a GitHub Release with
+# the matching CHANGELOG.md section. A push that keeps the same version does
+# nothing. To release, bump metadata.version and add a CHANGELOG section.
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Is this version released already?
+        id: check
+        run: |
+          VERSION=$(python .github/scripts/build_skill.py --version)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+            echo "release=false" >> "$GITHUB_OUTPUT"
+            echo "v$VERSION already exists; nothing to release."
+          else
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Tests and self-audit
+        if: steps.check.outputs.release == 'true'
+        run: |
+          python -m unittest discover -s tests
+          python scripts/skill_audit.py audit .
+
+      - name: Build package and notes
+        if: steps.check.outputs.release == 'true'
+        env:
+          VERSION: ${{ steps.check.outputs.version }}
+        run: |
+          python .github/scripts/build_skill.py
+          awk -v ver="$VERSION" '
+            /^## / { if (found) exit; if (index($0, ver) > 0) { found=1; next } }
+            found { print }
+          ' CHANGELOG.md > notes.md
+          [ -s notes.md ] || echo "Release $VERSION" > notes.md
+
+      - name: Publish GitHub Release
+        if: steps.check.outputs.release == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.check.outputs.version }}
+        run: |
+          gh release create "v$VERSION" dist/skill-diet.skill \
+            --target "$GITHUB_SHA" --title "v$VERSION" --notes-file notes.md

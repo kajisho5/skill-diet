@@ -1,0 +1,35 @@
+name: tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.9 is the promised floor, 3.13 the newest checked. Linux only: the
+        # scripts are pure standard library with no OS-specific calls.
+        python: ["3.9", "3.13"]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: The skill passes its own audit
+        run: python scripts/skill_audit.py audit .
+      - name: Package builds
+        run: python .github/scripts/build_skill.py
